@@ -1,17 +1,23 @@
 import { body } from "express-validator";
 import { Router } from "express";
 import { handleInputErrors } from "./modules/middleware";
-import { createProduct, getProducts } from "./handlers/product";
+import {
+  createProduct,
+  deleteProduct,
+  getOneProduct,
+  getProducts,
+  updateProduct,
+} from "./handlers/product";
 
 const router = Router();
 //Product
 router.get("/product", getProducts);
-router.get("/product/:id", () => {});
+router.get("/product/:id", getOneProduct);
 router.put(
   "/product/:id",
   body("name").isString(),
   handleInputErrors,
-  (req, res) => {}
+  updateProduct
 );
 router.post(
   "/product",
@@ -19,7 +25,7 @@ router.post(
   handleInputErrors,
   createProduct
 );
-router.delete("/product/:id", () => {});
+router.delete("/product/:id", deleteProduct);
 
 //Update
 router.get("/update", () => {});
@@ -36,6 +42,7 @@ router.post(
   "/update",
   body("title").exists().isString(),
   body("body").exists().isString(),
+  body("productId").exists().isString(),
   () => {}
 );
 router.delete("/update/:id", () => {});

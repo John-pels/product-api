@@ -5,6 +5,6 @@
     "strict": true,
     "lib": ["esnext"],
     "esModuleInterop": true,
-    "typeRoots": ["./typings","./node_modules/@types"]
+    "typeRoots": ["./typings", "./node_modules/@types"]
   }
 }
