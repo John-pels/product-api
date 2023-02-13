@@ -1,6 +1,5 @@
-import { NextFunction, Response } from "express";
+import { NextFunction, Response, Request } from "express";
 import jwt from "jsonwebtoken";
-import { Request } from "../@types";
 import bcrypt from "bcrypt";
 
 export const comparePasswords = (password: string, hash: string) => {

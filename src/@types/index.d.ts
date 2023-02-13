@@ -1,4 +1,7 @@
-import { Request as ExpressRequest } from "express";
-export interface Request extends ExpressRequest {
-  user: string;
+declare module Express {
+  interface Request {
+    user: {
+      id: string;
+    };
+  }
 }
