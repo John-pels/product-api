@@ -1,5 +1,5 @@
 import { body } from "express-validator";
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import { handleInputErrors } from "./modules/middleware";
 import {
   createProduct,
@@ -66,5 +66,10 @@ router.put(
 );
 router.post("/updatepoint", () => {});
 router.delete("/updatepoint/:id", () => {});
+
+router.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  console.log(err);
+  res.json({ message: "in a router handler" });
+});
 
 export default router;
